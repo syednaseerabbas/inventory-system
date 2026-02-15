@@ -1,0 +1,150 @@
+import { Product, Supplier, Category, Transaction } from './types';
+
+export const generateSampleData = () => {
+  const categories: Category[] = [
+    { id: '1', name: 'Electronics', description: 'Electronic devices and components' },
+    { id: '2', name: 'Furniture', description: 'Office and home furniture' },
+    { id: '3', name: 'Stationery', description: 'Office supplies and stationery' },
+    { id: '4', name: 'Hardware', description: 'Tools and hardware items' },
+  ];
+
+  const suppliers: Supplier[] = [
+    {
+      id: '1',
+      name: 'TechSupply Co.',
+      email: 'contact@techsupply.com',
+      phone: '+1-555-0101',
+      address: '123 Tech Street, San Francisco, CA 94102',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '2',
+      name: 'Office Essentials Inc.',
+      email: 'sales@officeessentials.com',
+      phone: '+1-555-0202',
+      address: '456 Business Ave, New York, NY 10001',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '3',
+      name: 'Hardware Direct',
+      email: 'info@hardwaredirect.com',
+      phone: '+1-555-0303',
+      address: '789 Industrial Blvd, Chicago, IL 60601',
+      createdAt: new Date().toISOString(),
+    },
+  ];
+
+  const products: Product[] = [
+    {
+      id: '1',
+      name: 'Wireless Mouse',
+      sku: 'ELEC-001',
+      category: 'Electronics',
+      quantity: 45,
+      reorderLevel: 20,
+      unitPrice: 29.99,
+      supplierId: '1',
+      description: 'Ergonomic wireless mouse with USB receiver',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: '2',
+      name: 'Office Chair',
+      sku: 'FURN-001',
+      category: 'Furniture',
+      quantity: 12,
+      reorderLevel: 5,
+      unitPrice: 199.99,
+      supplierId: '2',
+      description: 'Ergonomic office chair with lumbar support',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: '3',
+      name: 'Notebook Set',
+      sku: 'STAT-001',
+      category: 'Stationery',
+      quantity: 150,
+      reorderLevel: 50,
+      unitPrice: 12.99,
+      supplierId: '2',
+      description: 'Pack of 5 spiral notebooks',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: '4',
+      name: 'USB Cable',
+      sku: 'ELEC-002',
+      category: 'Electronics',
+      quantity: 8,
+      reorderLevel: 25,
+      unitPrice: 9.99,
+      supplierId: '1',
+      description: '6ft USB-C to USB-A cable',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: '5',
+      name: 'Desk Lamp',
+      sku: 'FURN-002',
+      category: 'Furniture',
+      quantity: 28,
+      reorderLevel: 10,
+      unitPrice: 39.99,
+      supplierId: '2',
+      description: 'LED desk lamp with adjustable brightness',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: '6',
+      name: 'Screwdriver Set',
+      sku: 'HARD-001',
+      category: 'Hardware',
+      quantity: 35,
+      reorderLevel: 15,
+      unitPrice: 24.99,
+      supplierId: '3',
+      description: 'Professional 12-piece screwdriver set',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+  ];
+
+  const transactions: Transaction[] = [
+    {
+      id: '1',
+      productId: '1',
+      type: 'in',
+      quantity: 50,
+      reason: 'Initial stock',
+      timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      userId: 'admin',
+    },
+    {
+      id: '2',
+      productId: '1',
+      type: 'out',
+      quantity: 5,
+      reason: 'Sale',
+      timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+      userId: 'admin',
+    },
+    {
+      id: '3',
+      productId: '4',
+      type: 'out',
+      quantity: 17,
+      reason: 'Sale',
+      timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+      userId: 'admin',
+    },
+  ];
+
+  return { products, suppliers, categories, transactions };
+};
