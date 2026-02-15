@@ -44,15 +44,17 @@ export const PERMISSIONS = {
   },
 };
 
+// Check if user has permission
 export const hasPermission = (
   role: UserRole,
   resource: keyof typeof PERMISSIONS.admin,
   action: 'create' | 'read' | 'update' | 'delete'
 ): boolean => {
+  type Permission = { create: boolean; read: boolean; update: boolean; delete: boolean };
   const rolePermissions = PERMISSIONS[role];
-  const resourcePermissions = rolePermissions[resource] as Record<string, boolean>;
+  const resourcePermissions = rolePermissions[resource] as Permission;
   
-  return resourcePermissions[action] ?? false;
+  return resourcePermissions[action];
 };
 
 // Storage keys for auth
